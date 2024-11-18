@@ -1,5 +1,4 @@
 /* general page styling */
-
 :root {
   --main-bg-color: #020404;
   --main-text-color: #efe3e3;
@@ -67,25 +66,72 @@ h3 {
 /* page header */
 
 #space-image {
-  height: 12vh;
+  height: 8vh;
   transition: height 0.2s, transform 0.2s;
 
   &:hover {
-    height: 14vh;
+    height: 11vh;
   }
 }
 
-header {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  overflow: hidden;
+#header-image {
+  max-height: 100%;
 }
 
-#header-image {
-  height: 20vh;
-  max-width: 40vw;
+header {
+  display: grid;
+  grid-template:
+    "logo . nav        nav"
+    "logo . .          ." min-content
+    "logo . space-text space-image" min-content /
+    minmax(min-content, 30vw) 1fr auto minmax(0, min-content);
+  overflow: hidden;
+
+  #logo {
+    grid-area: logo;
+  }
+  nav {
+    grid-area: nav;
+  }
+  #space-text {
+    grid-area: space-text;
+    text-align: right;
+    margin-right: 1em;
+    vertical-align: bottom;
+    margin-top: auto;
+  }
+  #space-image-container {
+    grid-area: space-image;
+  }
+}
+
+@media screen and (device-width < 600px) {
+  header {
+    grid-template:
+      "logo space-image" minmax(0, 20vh)
+      "nav nav" min-content /
+      auto minmax(0, min-content);
+
+    #space-image-container {
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: auto;
+    }
+
+    #space-text {
+      display: none;
+    }
+  }
+}
+
+@media screen and (device-width < 340px) {
+  header {
+    grid-template:
+      "logo" minmax(5cm, 20vh)
+      "space-image" min-content
+      "nav" /
+      1fr;
+  }
 }
 
 #skip-header {
@@ -113,6 +159,7 @@ header {
 
 nav {
   display: flex;
+  justify-content: end;
   flex-wrap: wrap;
   margin: 1em;
 

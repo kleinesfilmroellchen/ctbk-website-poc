@@ -4,32 +4,41 @@ const refreshRate = 60 * 1000;
 
 function checkSpace() {
   const icon = document.getElementById("space-image");
-  let openText = "";
+  const stateItem = document.getElementById("space-state");
+  const stateLastUpdateItem = document.getElementById("space-last-update");
+  let stateText = "",
+    stateLastUpdate = "";
   fetch("https://spaceapi.ctbk.de/")
     .then((response) => response.json())
     .then((data) => {
+      let openText = "";
       if (data.state.open) {
-        openText = "Offen";
+        openText = "offen";
         icon.src = data.state.icon.open;
       } else {
-        openText = "Geschlossen";
+        openText = "geschlossen";
         icon.src = data.state.icon.closed;
       }
-      icon.alt = "Der Space ist " + openText;
+      stateText = `Der Space ist derzeit ${openText}.`;
       const lastchangeString = data.state.lastchange
         ? new Date(data.state.lastchange * 1000).toLocaleString(true, {
             timeStyle: "short",
             dateStyle: "medium",
           })
         : "unbekannt";
-      icon.title = "Letzte Statusänderung: " + lastchangeString;
+      stateLastUpdate = "Letzte Statusänderung: " + lastchangeString;
       console.log("Icon: " + icon.src);
     })
     .catch((error) => {
       icon.src = "/img/unknown.png";
-      icon.alt = "Der Spacestatus ist unbekannt";
-      icon.title = "";
+      stateText = "Der Spacestatus ist unbekannt";
       console.error("Error on space state retrieval:", error);
+    })
+    .then(() => {
+      icon.alt = stateText;
+      icon.text = stateLastUpdate;
+      stateItem.innerText = stateText;
+      stateLastUpdateItem.innerText = stateLastUpdate;
     });
 }
 
@@ -39,3 +48,7 @@ const interval = setInterval(() => {
 
 document.addEventListener("DOMContentLoaded", checkSpace);
 document.addEventListener("DOMContentLoaded", hackcal);
+
+document
+  .getElementById("expand-calendar")
+  ?.addEventListener("click", () => hackcal(null, 6));

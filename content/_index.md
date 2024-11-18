@@ -22,7 +22,7 @@ Weitere Treffen finden nach Bedarf meist sonntags statt. Tagesordnungen, Protoko
 
 <div id="dbkcalendar"><strong>Kalender wird geladen, wenn du JavaScript aktiviert hast.</strong></div>
 
-- [Mehr Termine anzeigen](/termine)
+- <a href="#termine" id="expand-calendar">Mehr Termine anzeigen</a>
 - [Kalender abonnieren](https://cloud.hacknang.de/remote.php/dav/public-calendars/nZTMSHpd29ZRpAr6/?export)
 
 ## Ausstattung

@@ -13,7 +13,7 @@ export default function hackcal(e, p = 1) {
   const calendarParent = document.getElementById("dbkcalendar");
   const body = calendar.querySelector("tbody");
 
-  const calUri = "https://hackcal.ctbk.de/?period=" + p;
+  const calUri = `https://hackcal.ctbk.de/?period=${p}`;
   fetch(calUri)
     .then((res) => res.json())
     .then((data) => {
@@ -68,7 +68,7 @@ export default function hackcal(e, p = 1) {
           }
 
           const categoriesParent = entryItem.querySelector(".categories");
-          for (const category of event.categories.split(",")) {
+          for (const category of event.categories?.split(",") || []) {
             const categoryItem = document.createElement("em");
             categoryItem.innerText = category;
             categoriesParent.appendChild(categoryItem);

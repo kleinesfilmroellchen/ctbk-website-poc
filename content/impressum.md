@@ -43,4 +43,3 @@ Bei Überweisungen bitte den Verwendungszweck "Spende Chaostreff Backnang" verwe
 Der Chaostreff Backnang e.V. ist im Sinne der Abgabenordnung (AO) als gemeinnützig anerkannt (siehe [§2 Abs. 1 der Satzung](/docs/Satzung.pdf)) und stellt auf Anfrage Spendenbescheinigungen aus. Dafür bitte eine E-Mail an den Vorstand senden und dabei den vollen Namen, die vollständige Anschrift sowie Datum und Höhe der Zuwendung erwähnen.
 
 Bei Beträgen unter 200€ reicht dem Finanzamt ein sogenannter einfacher Nachweis, das ist ein Kontoauszug oder ein Ausdruck der Überweisungsbestätigung.
-
