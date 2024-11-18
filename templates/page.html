@@ -1,11 +1,25 @@
-<!doctype html>
-<!doctype html>
-{% if page.title %} {% set title = page.title %} {% elif section.title %} {% set
-title = section.title %} {% elif config.title %} {% set title = config.title %}
-{% endif %} {% if page.description %} {% set description = page.description |
-truncate(length=150) %} {% elif section.description %} {% set description =
-section.description | truncate(length=150) %} {% elif config.description %} {%
-set description = config.description | truncate(length=150) %} {% endif %}
+<!DOCTYPE html>
+{% if page.title %} 
+{% set title = page.title %} 
+{% elif section.title %} 
+{% set title = section.title %} 
+{% elif config.title %} 
+{% set title = config.title %}
+{% endif %} 
+
+{% if page.description %} 
+{% set description = page.description | truncate(length=150) %} 
+{% elif section.description %} 
+{% set description = section.description | truncate(length=150) %} 
+{% elif page.summary %} 
+{% set description = page.summary | truncate(length=150) %} 
+{% elif section.summary %}
+{% set description = section.summary | truncate(length=150) %} 
+{% elif config.description %} 
+{% set description = config.description | truncate(length=150) %}
+{% else %}
+{% set description = "" %}
+{% endif %}
 <html lang="{{ config.default_language }}">
   <head>
     <meta charset="UTF-8" />
@@ -52,7 +66,7 @@ set description = config.description | truncate(length=150) %} {% endif %}
   </head>
   <body>
     <header>
-      <a id="skip-header" href="#main-content">Skip to main content</a>
+      <a id="skip-header" href="#main-content">Zum Inhalt springen</a>
       <a href="/" tabindex="-1"
         ><img
           id="header-image"
@@ -62,8 +76,9 @@ set description = config.description | truncate(length=150) %} {% endif %}
       <nav>
         <a href="{{ get_url(path='/') }}">Home</a>
         <a href="{{ get_url(path='/termine') }}">Termine</a>
-        <a href="{{ get_url(path='/fsck') }}">FSCK</a>
-        <a href="{{ get_url(path='/freifunk') }}">Freifunk</a>
+        <a href="{{ get_url(path='/verein') }}">Verein</a>
+        <a href="https://fsck.ctbk.de/">FSCK</a>
+        <a href="https://hacknang.de/freifunk/">Freifunk</a>
         <a class="image-container" href="https://spaceapi.ctbk.de"
           ><img id="space-image" src="" alt="Space Icon"
         /></a>
@@ -81,12 +96,26 @@ set description = config.description | truncate(length=150) %} {% endif %}
       <a href="{{ get_url(path='/datenschutz') }}">Datenschutz</a>
     </footer>
 
+    <template id="calendar">
+      <table>
+        <tbody></tbody>
+      </table>
+    </template>
     <template id="calendar-date">
-      <tr class="calendar-date" data-date=""></tr>
+      <tr class="calendar-date">
+        <th colspan="2">
+          <time></time>
+        </th>
+      </tr>
     </template>
     <template id="calendar-entry">
       <tr class="calendar-entry" data-uid="">
-        
+        <td class="time"></td>
+        <td>
+          <p><em class="summary"></em> | <span class="location"></span></p>
+          <p class="description"></p>
+          <p class="categories"></p>
+        </td>
       </tr>
     </template>
   </body>

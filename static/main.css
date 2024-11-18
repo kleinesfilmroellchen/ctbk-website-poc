@@ -1,3 +1,5 @@
+/* general page styling */
+
 :root {
   --main-bg-color: #020404;
   --main-text-color: #efe3e3;
@@ -42,13 +44,31 @@ code {
 
 img {
   display: block;
+
+  &.small {
+    max-height: 10em;
+    width: auto;
+  }
 }
+
+h1 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 0.5em;
+  color: var(--main-accent-color);
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+
+/* page header */
 
 #space-image {
   height: 12vh;
-  transition:
-    height 0.2s,
-    transform 0.2s;
+  transition: height 0.2s, transform 0.2s;
 
   &:hover {
     height: 14vh;
@@ -105,9 +125,7 @@ nav {
     margin-bottom: 0.4em;
     text-transform: uppercase;
     text-decoration: underline 0.15em var(--main-text-color);
-    transition:
-      text-decoration-color 0.3s,
-      color 0.25s;
+    transition: text-decoration-color 0.3s, color 0.25s;
 
     &:focus,
     &:hover {
@@ -116,6 +134,8 @@ nav {
     }
   }
 }
+
+/* main grid */
 
 main {
   display: grid;
@@ -132,12 +152,6 @@ main {
   }
 }
 
-h1 {
-  font-weight: 700;
-  margin-bottom: 0.5em;
-  color: var(--main-accent-color);
-}
-
 footer {
   background-color: var(--main-bg-color);
   text-align: center;
@@ -152,4 +166,51 @@ footer {
     transparent
   );
   border-image-slice: 1;
+}
+
+/* calendar */
+
+#dbkcalendar {
+  * {
+    border-radius: 0.25em;
+  }
+
+  .calendar-date th {
+    padding: 0.5em 1em;
+    background: oklch(40% 0 0);
+  }
+  td {
+    padding: 1em;
+  }
+  p {
+    margin: 0;
+    max-height: min-content;
+
+    &.categories {
+      margin-top: 0.2em;
+
+      em {
+        background-color: var(--main-accent-color);
+        padding: 0 0.25em;
+        font-style: normal;
+        font-weight: bold;
+        color: var(--main-bg-color);
+      }
+    }
+  }
+}
+
+em.summary {
+  font-style: normal;
+  font-weight: bold;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  * {
+    text-align: left;
+    vertical-align: top;
+  }
 }
