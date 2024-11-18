@@ -1,0 +1,93 @@
+<!doctype html>
+<!doctype html>
+{% if page.title %} {% set title = page.title %} {% elif section.title %} {% set
+title = section.title %} {% elif config.title %} {% set title = config.title %}
+{% endif %} {% if page.description %} {% set description = page.description |
+truncate(length=150) %} {% elif section.description %} {% set description =
+section.description | truncate(length=150) %} {% elif config.description %} {%
+set description = config.description | truncate(length=150) %} {% endif %}
+<html lang="{{ config.default_language }}">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#252627" />
+    <meta name="description" content="{{ title }}" />
+
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta
+      property="og:image"
+      content="{{ get_url(path='logo.svg', trailing_slash=false) }}"
+    />
+    <meta property="og:url" content="{{ get_url(path='') }}" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ title }}" />
+    <meta name="twitter:description" content="{{ description }}" />
+    <meta
+      name="twitter:image"
+      content="{{ get_url(path='logo.svg', trailing_slash=false) }}"
+    />
+
+    <link
+      rel="icon"
+      href="{{ get_url(path='favicon.png', trailing_slash=false) }}"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="{{ get_url(path='logo.svg', trailing_slash=false) }}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ get_url(path='main.css', trailing_slash=false) }}"
+    />
+    <script
+      src="{{ get_url(path='main.js', trailing_slash=false) }}"
+      type="module"
+    ></script>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <header>
+      <a id="skip-header" href="#main-content">Skip to main content</a>
+      <a href="/" tabindex="-1"
+        ><img
+          id="header-image"
+          src="{{ get_url(path='logo.svg', trailing_slash=false) }}"
+          alt="Chaostreff Backnang Logo"
+      /></a>
+      <nav>
+        <a href="{{ get_url(path='/') }}">Home</a>
+        <a href="{{ get_url(path='/termine') }}">Termine</a>
+        <a href="{{ get_url(path='/fsck') }}">FSCK</a>
+        <a href="{{ get_url(path='/freifunk') }}">Freifunk</a>
+        <a class="image-container" href="https://spaceapi.ctbk.de"
+          ><img id="space-image" src="" alt="Space Icon"
+        /></a>
+      </nav>
+    </header>
+    <main id="main-content">
+      <section class="main-text">
+        {% if section %} {{ section.content | safe }} {% else %} {{ page.content
+        | safe }} {% endif %}
+      </section>
+    </main>
+    <footer>
+      © 2024 Chaostreff Backnang |
+      <a href="{{ get_url(path='/impressum') }}">Impressum</a> |
+      <a href="{{ get_url(path='/datenschutz') }}">Datenschutz</a>
+    </footer>
+
+    <template id="calendar-date">
+      <tr class="calendar-date" data-date=""></tr>
+    </template>
+    <template id="calendar-entry">
+      <tr class="calendar-entry" data-uid="">
+        
+      </tr>
+    </template>
+  </body>
+</html>
