@@ -13,8 +13,7 @@ export default function hackcal(e, p = 1) {
   const calendarParent = document.getElementById("dbkcalendar");
   const body = calendar.querySelector("tbody");
 
-  // const cal_uri = "https://chaostreff-backnang.de/hackcal/?period=" + p;
-  const calUri = "/hackcal";
+  const calUri = "https://hackcal.ctbk.de/?period=" + p;
   fetch(calUri)
     .then((res) => res.json())
     .then((data) => {
