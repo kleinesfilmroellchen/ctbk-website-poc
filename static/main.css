@@ -23,7 +23,7 @@ body {
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
 
-  margin: 1.5rem;
+  margin: 3rem;
   margin-top: 0;
 }
 
@@ -84,7 +84,7 @@ header {
     "logo . nav        nav"
     "logo . .          ." min-content
     "logo . space-text space-image" min-content /
-    minmax(min-content, 30vw) 1fr auto minmax(0, min-content);
+    minmax(min-content, 25vw) 1fr auto minmax(0, min-content);
   overflow: hidden;
 
   #logo {
@@ -105,7 +105,18 @@ header {
   }
 }
 
-@media screen and (device-width < 600px) {
+@media screen and (device-width > 1700px) {
+  header {
+    position: fixed;
+    width: calc(100vw - 2 * 3em);
+  }
+}
+
+@media screen and (device-width < 650px) {
+  body {
+    margin: 1.5rem;
+    margin-top: 0;
+  }
   header {
     grid-template:
       "logo space-image" minmax(0, 20vh)
@@ -124,13 +135,13 @@ header {
   }
 }
 
-@media screen and (device-width < 340px) {
+@media screen and (device-width < 400px) {
   header {
     grid-template:
-      "logo" minmax(5cm, 20vh)
-      "space-image" min-content
-      "nav" /
-      1fr;
+      ". logo ." minmax(3cm, 10vh)
+      "space-text space-text space-image" min-content
+      "nav nav nav" /
+      1fr minmax(min-content, 30vh) 1fr;
   }
 }
 

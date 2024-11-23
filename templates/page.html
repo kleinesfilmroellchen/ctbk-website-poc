@@ -62,7 +62,6 @@ truncate(length=150) %} {% else %} {% set description = "" %} {% endif %}
           alt="Chaostreff Backnang Logo"
       /></a>
       <nav>
-        <a href="{{ get_url(path='/') }}">Home</a>
         <a href="{{ get_url(path='/#termine') }}">Termine</a>
         <a href="{{ get_url(path='/#kontakt') }}">Kontakt</a>
         <a href="{{ get_url(path='/#dienste') }}">Dienste</a>
@@ -74,10 +73,11 @@ truncate(length=150) %} {% else %} {% set description = "" %} {% endif %}
           >Nächstes Treffen: siehe <a href="/#termine">Termine</a></span
         ><br /><span id="space-last-update"></span>
       </p>
+      <!-- TODO: explainer page for the spaceapi and how we implement it -->
       <a
         class="image-container"
         id="space-image-container"
-        href="https://spaceapi.ctbk.de"
+        href=""
         ><img
           id="space-image"
           src="{{ get_url(path='/img/unknown.png') }}"
