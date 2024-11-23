@@ -105,14 +105,14 @@ header {
   }
 }
 
-@media screen and (device-width > 1700px) {
+@media screen and (width > 1700px) {
   header {
     position: fixed;
     width: calc(100vw - 2 * 3em);
   }
 }
 
-@media screen and (device-width < 650px) {
+@media screen and (width < 650px) {
   body {
     margin: 1.5rem;
     margin-top: 0;
@@ -135,7 +135,7 @@ header {
   }
 }
 
-@media screen and (device-width < 400px) {
+@media screen and (width < 400px) {
   header {
     grid-template:
       ". logo ." minmax(3cm, 10vh)
