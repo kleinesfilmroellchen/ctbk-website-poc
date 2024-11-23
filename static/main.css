@@ -67,7 +67,7 @@ h3 {
 
 #space-image {
   height: 8vh;
-  transition: height 0.2s, transform 0.2s;
+  transition: height 0.2s;
 
   &:hover {
     height: 11vh;
@@ -82,8 +82,8 @@ header {
   display: grid;
   grid-template:
     "logo . nav        nav"
-    "logo . .          ." min-content
-    "logo . space-text space-image" min-content /
+    "logo . space-text space-image" min-content
+    "logo . .          ." min-content /
     minmax(min-content, 25vw) 1fr auto minmax(0, min-content);
   overflow: hidden;
 
@@ -108,43 +108,34 @@ header {
 @media screen and (width > 1700px) {
   header {
     position: fixed;
+    /* subtract exactly the margins to get the 100% horizontal fill we need */
     width: calc(100vw - 2 * 3em);
   }
 }
 
+/* mobile header, just some vertical rearranging and smaller margins */
 @media screen and (width < 650px) {
   body {
     margin: 1.5rem;
     margin-top: 0;
   }
+
   header {
     grid-template:
-      "logo space-image" minmax(0, 20vh)
-      "nav nav" min-content /
-      auto minmax(0, min-content);
+      "logo logo" minmax(3cm, 10vh)
+      "nav nav"
+      "space-text space-image" min-content /
+      auto min-content;
 
     #space-image-container {
       margin-top: auto;
       margin-bottom: auto;
       margin-left: auto;
     }
-
-    #space-text {
-      display: none;
-    }
   }
 }
 
-@media screen and (width < 400px) {
-  header {
-    grid-template:
-      ". logo ." minmax(3cm, 10vh)
-      "space-text space-text space-image" min-content
-      "nav nav nav" /
-      1fr minmax(min-content, 30vh) 1fr;
-  }
-}
-
+/* skip to content element, lots of positioning styles copied from html5-boilerplate */
 #skip-header {
   background: var(--main-bg-color);
   border: 0;

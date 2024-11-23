@@ -68,16 +68,9 @@ truncate(length=150) %} {% else %} {% set description = "" %} {% endif %}
         <a href="{{ get_url(path='/verein') }}">Verein</a>
         <a href="https://fsck.ctbk.de/">FSCK</a>
       </nav>
-      <p id="space-text">
-        <strong id="space-state"></strong><br /><span
-          >Nächstes Treffen: siehe <a href="/#termine">Termine</a></span
-        ><br /><span id="space-last-update"></span>
-      </p>
+      <p id="space-text"></p>
       <!-- TODO: explainer page for the spaceapi and how we implement it -->
-      <a
-        class="image-container"
-        id="space-image-container"
-        href=""
+      <a class="image-container" id="space-image-container" href=""
         ><img
           id="space-image"
           src="{{ get_url(path='/img/unknown.png') }}"
