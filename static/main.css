@@ -97,11 +97,15 @@ header {
     grid-area: space-text;
     text-align: right;
     margin-right: 1em;
-    vertical-align: bottom;
-    margin-top: auto;
   }
   #space-image-container {
     grid-area: space-image;
+  }
+  #menu-button {
+    display: none;
+  }
+  #menu-checkbox {
+    display: none;
   }
 }
 
@@ -122,7 +126,7 @@ header {
 
   header {
     grid-template:
-      "logo logo" minmax(3cm, 10vh)
+      "logo hamburger-menu" minmax(3cm, 10vh)
       "nav nav"
       "space-text space-image" min-content /
       auto min-content;
@@ -131,6 +135,69 @@ header {
       margin-top: auto;
       margin-bottom: auto;
       margin-left: auto;
+    }
+  }
+
+  nav {
+    transition: max-height 0.2s cubic-bezier(0.86, 0, 0.07, 1),
+      margin 0.2s cubic-bezier(0.86, 0, 0.07, 1);
+    overflow-y: hidden;
+    height: auto;
+  }
+
+  /* hamburger menu */
+  #menu-checkbox:not(:checked) ~ nav {
+    max-height: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  #menu-checkbox:checked ~ nav {
+    max-height: 40vh;
+  }
+  #menu-label {
+    grid-area: hamburger-menu;
+    display: block;
+    margin: auto;
+    margin-bottom: 1em;
+    height: 1.2em;
+    width: 2em;
+  }
+  #menu-button {
+    display: block !important;
+    margin-top: 0.5em;
+
+    &,
+    &::before,
+    &::after {
+      display: block;
+      background-color: var(--main-text-color);
+      position: absolute;
+      height: 0.2em;
+      width: 2em;
+      transition: all 200ms ease-in-out;
+      border-radius: 2px;
+    }
+
+    &::before {
+      content: "";
+      margin-top: -0.5em;
+    }
+
+    &::after {
+      content: "";
+      margin-top: 0.5em;
+    }
+  }
+  #menu-checkbox:checked + #menu-label #menu-button {
+    background: transparent;
+    &::before {
+      margin-top: 0;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      margin-top: 0;
+      transform: rotate(-45deg);
     }
   }
 }

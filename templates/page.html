@@ -61,6 +61,10 @@ truncate(length=150) %} {% else %} {% set description = "" %} {% endif %}
           src="{{ get_url(path='logo.svg', trailing_slash=false) }}"
           alt="Chaostreff Backnang Logo"
       /></a>
+      <input type="checkbox" id="menu-checkbox" name="menu-checkbox" />
+      <label id="menu-label" for="menu-checkbox"
+        ><div id="menu-button"></div
+      ></label>
       <nav>
         <a href="{{ get_url(path='/#termine') }}">Termine</a>
         <a href="{{ get_url(path='/#kontakt') }}">Kontakt</a>
