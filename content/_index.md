@@ -11,7 +11,7 @@ Der Chaostreff Backnang e.V. ist ein Anlaufpunkt und Austauschort für Technik-I
 
 <!-- more -->
 
-Der Chaostreff Backnang ist ein seit 2019 bestehender und seit 2023 eingetragener Verein in Backnang, der sich dem [Chaos Computer Club](https://www.ccc.de/) verbunden fühlt. Bei uns sind Wesen aller Herkunft und aller Lebenssituationen willkommen, nicht nur aus Backnang und Umgebung.
+Der Chaostreff Backnang ist ein seit 2018 bestehender Verein in Backnang, der sich dem [Chaos Computer Club](https://www.ccc.de/) verbunden fühlt. Bei uns sind Wesen aller Herkunft und aller Lebenssituationen willkommen, nicht nur aus Backnang und Umgebung.
 
 ![Bild aus dasWohnzimmer](/wozi.jpg)
 
