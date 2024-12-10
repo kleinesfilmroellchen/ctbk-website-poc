@@ -19,7 +19,7 @@ E-Mail: vorstand@chaostreff-backnang.de - Nur für Fragen, die den Vorstand betr
 
 - Patrick Schwarz
 - Marco von Rosenberg
-- Joachim Ernst
+- Konstantinos Katsimpas
 - Nick Hahn
 - Miriam Haas
 
