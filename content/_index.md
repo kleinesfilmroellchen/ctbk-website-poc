@@ -2,6 +2,7 @@
 title = "Chaostreff Backnang"
 template = "page.html"
 page_template = "page.html"
+description = "Der Chaostreff Backnang e.V. ist ein Anlaufpunkt und Austauschort für Technik-Interessierte, Bastler*innen, Datenreisende und Wesen mit Spaß am Gerät."
 +++
 
 # Chaostreff Backnang
