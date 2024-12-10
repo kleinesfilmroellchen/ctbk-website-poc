@@ -6,7 +6,8 @@ function checkSpace() {
   const icon = document.getElementById("space-image");
   const stateItem = document.getElementById("space-text");
   let stateText = "",
-    stateLastUpdate = "";
+    stateLastUpdate = "",
+    imageAlt = "";
   fetch("https://spaceapi.ctbk.de/")
     .then((response) => response.json())
     .then((data) => {
@@ -24,16 +25,17 @@ function checkSpace() {
             dateStyle: "medium",
           })
         : "unbekannt";
+      imageAlt = `Space ${openText} seit ${lastchangeString}`;
       stateText = `Space <strong>${openText}</strong> seit ${lastchangeString}`;
       stateLastUpdate = `Letzte Statusänderung: ${lastchangeString}`;
     })
     .catch((error) => {
       icon.src = "/img/unknown.png";
-      stateText = "Spacestatus unbekannt";
+      imageAlt = stateText = "Spacestatus unbekannt";
       console.error("Error on space state retrieval:", error);
     })
     .then(() => {
-      icon.alt = stateText;
+      icon.alt = imageAlt;
       icon.text = stateLastUpdate;
       stateItem.innerHTML = stateText;
     });

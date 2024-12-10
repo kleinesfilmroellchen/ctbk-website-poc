@@ -30,7 +30,7 @@ Weitere Treffen finden nach Bedarf meist sonntags statt. Tagesordnungen, Protoko
 
 - Freifunk durch unsere Partnercommunity Freifunk Backnang
 
-<a href="https://hacknang.de/freifunk/" target="_blank"><img alt="Logo von Freifunk Stuttgart" src="/img/ffs-bk-paths.svg" class="small"></a>
+<a href="https://hacknang.de/freifunk/" target="_blank"><img alt="Logo von Freifunk Backnang" src="/img/ffs-bk-paths.svg" class="small"></a>
 
 - Getränke und Snacks der Bar (auch Mate!)
 - Sofas
