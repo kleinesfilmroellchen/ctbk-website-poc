@@ -4,6 +4,8 @@
   --main-text-color: #efe3e3;
   --main-accent-color: #f9c827;
   --secondary-accent-color: #ff925f;
+
+  scroll-behavior: smooth;
 }
 
 * {
