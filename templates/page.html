@@ -1,13 +1,27 @@
 <!DOCTYPE html>
-{% if page.title %} {% set title = page.title %} {% elif section.title %} {% set
-title = section.title %} {% elif config.title %} {% set title = config.title %}
-{% endif %} {% if page.description %} {% set description = page.description |
-truncate(length=150) %} {% elif section.description %} {% set description =
-section.description | truncate(length=150) %} {% elif page.summary %} {% set
-description = page.summary | truncate(length=150) %} {% elif section.summary %}
-{% set description = section.summary | truncate(length=150) %} {% elif
-config.description %} {% set description = config.description |
-truncate(length=150) %} {% else %} {% set description = "" %} {% endif %}
+<!-- prettier-ignore -->
+{% if page.title %} {% set title = page.title %}
+<!-- prettier-ignore -->
+{% elif section.title %} {% set title = section.title %}
+<!-- prettier-ignore -->
+{% elif config.title %} {% set title = config.title %}
+<!-- prettier-ignore -->
+{% endif %}
+
+<!-- prettier-ignore -->
+{% if page.description %} {% set description = page.description | truncate(length=150) %}
+<!-- prettier-ignore -->
+{% elif section.description %} {% set description = section.description | truncate(length=150) %}
+<!-- prettier-ignore -->
+{% elif page.summary %} {% set description = page.summary | truncate(length=150) %}
+<!-- prettier-ignore -->
+{% elif section.summary %} {% set description = section.summary | truncate(length=150) %}
+<!-- prettier-ignore -->
+{% elif config.description %} {% set description = config.description | truncate(length=150) %}
+<!-- prettier-ignore -->
+{% else %} {% set description = "" %}
+<!-- prettier-ignore -->
+{% endif %}
 <html lang="{{ config.default_language }}">
   <head>
     <meta charset="UTF-8" />
