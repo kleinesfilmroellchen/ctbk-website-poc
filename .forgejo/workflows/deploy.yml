@@ -1,0 +1,21 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-website:
+    name: Build and deploy website
+    runs-on: alpine:edge
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: apk add curl nodejs git zola openssh
+      - name: Output SSH key to file
+        run: echo ${{ secrets.SSH_KEY }} > ssh_id
+      - name: Build web
+        run: zola build
+        # TODO: this is where the LaTeX build would go...
+      - name: Transfer built files
+        run: scp -i ssh_id -o StrictHostKeyChecking=accept-new -r ./public/ ${{ vars.SERVER_URL }}
