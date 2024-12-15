@@ -1,11 +1,21 @@
 /* general page styling */
 :root {
   --main-bg-color: #020404;
+  --main-bg-contrast-color: oklch(40% 0 0);
   --main-text-color: #efe3e3;
   --main-accent-color: #f9c827;
   --secondary-accent-color: #ff925f;
 
   scroll-behavior: smooth;
+}
+
+@media(prefers-color-scheme: light) {
+  :root {
+    --main-bg-color: #fdfbfb;
+    --main-bg-contrast-color: oklch(90% 0 0);
+    --main-text-color: #101c1c;
+    --main-accent-color: #836400;
+  }
 }
 
 * {
@@ -306,7 +316,7 @@ footer {
 
   .calendar-date th {
     padding: 0.5em 1em;
-    background: oklch(40% 0 0);
+    background: var(--main-bg-contrast-color);
   }
   td {
     padding: 1em;

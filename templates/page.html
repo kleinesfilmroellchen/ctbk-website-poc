@@ -56,6 +56,10 @@
       href="{{ get_url(path='logo.svg', trailing_slash=false) }}"
     />
 
+    <!-- Disables Dark Reader for this site.
+         We have our own dark-mode and dark reader mangles the page background. -->
+    <meta name="darkreader-lock">
+
     <link
       rel="stylesheet"
       href="{{ get_url(path='main.css', trailing_slash=false) }}"
