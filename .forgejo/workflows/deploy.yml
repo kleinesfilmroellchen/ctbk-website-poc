@@ -4,20 +4,63 @@ on:
       - main
 
 jobs:
-  build-website:
-    name: Build and deploy website
+  # TODO: belongs in the other repo
+  build-latex:
+    name: Build LaTeX documents
     runs-on: alpine:edge
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
       - name: Install dependencies
-        run: apk add curl nodejs git zola openssh minify
+        run: apk add nodejs git openssh texlive texlive-xetex texmf-dist-latexrecommended texmf-dist-latexextra texmf-dist-langgerman
+      - name: Checkout LaTeX repository
+        uses: actions/checkout@v4
+        with:
+          # todo: repo path
+          repository: https://git.p-schwarz.de/ctbk/ctbk-satzung
+      - name: Clone main repo for scripts
+        run: git clone ${{ github.repository }} website
+      - run: mkdir build output
+
+      - name: Build Satzung
+        run: website/.forgejo/workflows/latex.sh Satzung.tex build
+      - name: Build Geschäftsordnung
+        run: website/.forgejo/workflows/latex.sh Geschaeftsordnung.tex build
+      - name: Build Gebührenordnung
+        run: website/.forgejo/workflows/latex.sh Gebuehrenordnung.tex build
+      - name: Build Mitgliedsantrag
+        working-directory: Mitgliedsantrag-main
+        run: ../website/.forgejo/workflows/latex.sh Mitgliedsantrag_Lastschriftmandat_klein.tex ../build
+      - name: Build Mitgliedsantrag Fördermitglied
+        working-directory: Mitgliedsantrag-main
+        run: ../website/.forgejo/workflows/latex.sh Mitgliedsantrag_Foerder_Lastschriftmandat.tex ../build
+
+      - name: Move PDFs to output directory
+        run: |
+          mv build/*.pdf output
+          mv output/Mitgliedsantrag_Lastschriftmandat_klein.pdf output/Mitgliedsantrag.pdf
+          mv output/Mitgliedsantrag_Foerder_Lastschriftmandat.pdf output/Mitgliedsantrag_Foerder.pdf
+
       - name: Output SSH key to file
         run: echo ${{ secrets.SSH_KEY }} > ssh_id
+      - name: Transfer built files
+        run: scp -i ssh_id -o StrictHostKeyChecking=accept-new -r ./output/ ${{ vars.SERVER_URL }}/docs
+
+  build-website:
+    name: Build and deploy website
+    # needs:
+    #   - build-latex
+    runs-on: alpine:edge
+    steps:
+      - name: Install dependencies
+        run: apk add curl nodejs git zola openssh minify texlive
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Build web
         run: zola build
       - name: Minify files
         run: minify --all -r -o . public
-        # TODO: this is where the LaTeX build would go...
+
+      - name: Output SSH key to file
+        run: echo ${{ secrets.SSH_KEY }} > ssh_id
       - name: Transfer built files
         run: scp -i ssh_id -o StrictHostKeyChecking=accept-new -r ./public/ ${{ vars.SERVER_URL }}
