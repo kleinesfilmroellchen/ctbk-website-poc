@@ -41,16 +41,12 @@ jobs:
       - name: Build Mitgliedsantrag
         working-directory: satzung/Mitgliedsantrag-main
         run: ../../website/.forgejo/workflows/latex.sh Mitgliedsantrag_Lastschriftmandat_klein.tex ../build
-      - name: Build Mitgliedsantrag Fördermitglied
-        working-directory: satzung/Mitgliedsantrag-main
-        run: ../../website/.forgejo/workflows/latex.sh Mitgliedsantrag_Foerder_Lastschriftmandat.tex ../build
 
       - name: Move PDFs to output directory
         working-directory: satzung
         run: |
           mv build/*.pdf output
           mv output/Mitgliedsantrag_Lastschriftmandat_klein.pdf output/Mitgliedsantrag.pdf
-          mv output/Mitgliedsantrag_Foerder_Lastschriftmandat.pdf output/Mitgliedsantrag_Foerder.pdf
 
       - name: Output SSH key to file
         working-directory: satzung
