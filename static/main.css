@@ -6,6 +6,11 @@
   --main-accent-color: #f9c827;
   --secondary-accent-color: #ff925f;
 
+  /* Tell browser that we support dark and light mode.
+     Allows browser to change UI elements to match the color scheme.
+     By default browser assume only light mode is supported and draw elements accordingly.
+     This for example includes the chrome scrollbar and default form elements. */
+  color-scheme: dark light;
   scroll-behavior: smooth;
 }
 
