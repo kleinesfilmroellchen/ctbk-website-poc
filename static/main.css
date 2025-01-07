@@ -1,8 +1,8 @@
 /* general page styling */
 :root {
-  --main-bg-color: #020404;
+  --main-bg-color: oklch(1% 0 0);
   --main-bg-contrast-color: oklch(40% 0 0);
-  --main-text-color: #efe3e3;
+  --main-text-color: oklch(92% 0 none);
   --main-accent-color: #f9c827;
   --secondary-accent-color: #ff925f;
 
@@ -14,12 +14,13 @@
   scroll-behavior: smooth;
 }
 
-@media(prefers-color-scheme: light) {
+@media (prefers-color-scheme: light) {
   :root {
-    --main-bg-color: #fdfbfb;
+    --main-bg-color: oklch(99% 0 0);
     --main-bg-contrast-color: oklch(90% 0 0);
-    --main-text-color: #101c1c;
-    --main-accent-color: #836400;
+    --main-text-color: oklch(15% 0 0);
+    --main-accent-color: oklch(40.8% 0.074 45);
+    --secondary-accent-color: oklch(85.13% 0.1737 89.73);
   }
 }
 
